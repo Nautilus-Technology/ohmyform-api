@@ -1,4 +1,5 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql'
+import { IdService } from 'src/service/id.service'
 import { createConnection } from 'typeorm'
 import { FormFieldLogicEntity } from '../../entity/form.field.logic.entity'
 
@@ -33,13 +34,13 @@ export class FormFieldLogicModel {
   @Field()
   readonly enabled: boolean
 
-  constructor(id: string, document: FormFieldLogicEntity) {
+  constructor(id: string, document: FormFieldLogicEntity, private readonly idService: IdService,) {
     this._id = document.id
     this.id = id
     this.enabled = document.enabled
     console.log('formfieldlogicmodel document: ', document)
     this.formula = document.formula
-    this.jumpTo = document.jumpToId?.toString()
+    this.jumpTo = this.idService.encode(document.jumpToId)
     this.idx = document.idx
     this.action = document.action
     this.visible = document.visible

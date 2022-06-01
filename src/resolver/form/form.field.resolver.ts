@@ -49,10 +49,14 @@ export class FormFieldResolver {
     }
 
     console.log('FormFieldResolver logic:', field.logic)
-    return field.logic.map(logic => new FormFieldLogicModel(
-      this.idService.encode(logic.id),
-      logic,
-    ))
+    return field.logic.map(
+      logic =>{
+        return new FormFieldLogicModel(
+          this.idService.encode(logic.id),
+          logic,
+          this.idService
+        )}
+    )
   }
 
   @ResolveField(() => FormFieldRatingModel, { nullable: true })
