@@ -1,4 +1,5 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql'
+import { createConnection } from 'typeorm'
 import { FormFieldLogicEntity } from '../../entity/form.field.logic.entity'
 
 @ObjectType('FormFieldLogic')
@@ -36,10 +37,9 @@ export class FormFieldLogicModel {
     this._id = document.id
     this.id = id
     this.enabled = document.enabled
-
+    console.log('formfieldlogicmodel document: ', document)
     this.formula = document.formula
-    this.jumpTo = document.jumpTo?.id.toString()
-
+    this.jumpTo = document.jumpToId?.toString()
     this.idx = document.idx
     this.action = document.action
     this.visible = document.visible

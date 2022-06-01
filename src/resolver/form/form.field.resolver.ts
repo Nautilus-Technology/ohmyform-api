@@ -48,6 +48,7 @@ export class FormFieldResolver {
       return []
     }
 
+    console.log('FormFieldResolver logic:', field.logic)
     return field.logic.map(logic => new FormFieldLogicModel(
       this.idService.encode(logic.id),
       logic,

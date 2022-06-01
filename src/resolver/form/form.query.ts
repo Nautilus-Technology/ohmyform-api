@@ -28,7 +28,6 @@ export class FormQuery {
     }
 
     cache.add(cache.getCacheKey(FormEntity.name, form.id), form)
-
     return new FormModel(this.idService.encode(form.id), form)
   }
 }

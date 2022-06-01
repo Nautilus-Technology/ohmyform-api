@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
 import { FormFieldEntity } from './form.field.entity'
 
 export type FormFieldLogicAction = 'visible' | 'require' | 'disable' | 'jumpTo'
@@ -29,8 +29,12 @@ export class FormFieldLogicEntity {
   @Column({ nullable: true })
   public disable?: boolean
 
-  @ManyToOne(() => FormFieldEntity)
+  @ManyToOne(() => FormFieldEntity, formField => formField)
+  @JoinColumn({name: 'jumpToId'})
   public jumpTo?: FormFieldEntity
+
+  @Column({type: 'integer', unsigned: true})
+  public jumpToId?: number
 
   @Column()
   public enabled: boolean
