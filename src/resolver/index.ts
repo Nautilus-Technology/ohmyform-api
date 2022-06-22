@@ -4,6 +4,7 @@ import { profileResolvers } from './profile'
 import { settingsResolvers } from './setting'
 import { StatusResolver } from './status.resolver'
 import { submissionResolvers } from './submission'
+import { UploadResolver } from './upload.resolver'
 import { userResolvers } from './user'
 
 export const resolvers = [
@@ -14,4 +15,5 @@ export const resolvers = [
   ...formResolvers,
   ...submissionResolvers,
   ...settingsResolvers,
+  UploadResolver,
 ]

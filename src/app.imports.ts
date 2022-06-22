@@ -73,7 +73,7 @@ export const imports = [
     }),
   }),
   LoggerModule.forRoot(LoggerConfig),
-  GraphQLModule.forRoot<ApolloDriverConfig>({
+  GraphQLModule.forRoot({
     debug: process.env.NODE_ENV !== 'production',
     definitions: {
       outputAs: 'class',
@@ -82,6 +82,7 @@ export const imports = [
     sortSchema: true,
     introspection: process.env.NODE_ENV !== 'production',
     playground: process.env.NODE_ENV !== 'production',
+    uploads: false,
     installSubscriptionHandlers: true,
     autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     // to allow guards on resolver props https://github.com/nestjs/graphql/issues/295
