@@ -4,6 +4,7 @@ import { PubSub, PubSubEngine } from 'graphql-subscriptions'
 import Redis from 'ioredis'
 import { PinoLogger } from 'nestjs-pino'
 import { authServices } from './auth'
+import { fileServices } from './file'
 import { formServices } from './form'
 import { IdService } from './id.service'
 import { InstallationMetricsService } from './installation.metrics.service'
@@ -14,6 +15,7 @@ import { submissionServices } from './submission'
 import { userServices } from './user'
 
 export const services = [
+  ...fileServices,
   ...userServices,
   ...profileServices,
   ...formServices,

@@ -5,6 +5,7 @@ import { RequestMethod } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { GraphQLModule } from '@nestjs/graphql'
 import { JwtModule, JwtModuleOptions } from '@nestjs/jwt'
+import { MulterModule } from '@nestjs/platform-express'
 import { ServeStaticModule } from '@nestjs/serve-static'
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm'
 import crypto from 'crypto'
@@ -43,6 +44,9 @@ export const LoggerConfig: LoggerModuleParams = {
 }
 
 export const imports = [
+  MulterModule.register({
+    dest: './upload',
+  }),
   ConsoleModule,
   HttpModule.register({
     timeout: 5000,
@@ -140,7 +144,7 @@ export const imports = [
 
       return ({
         name: 'ohmyform',
-        synchronize: false,
+        synchronize: true,
         type,
         url: configService.get<string>('DATABASE_URL'),
         database: type === 'sqlite' ? configService.get<string>('DATABASE_URL', 'data.sqlite').replace('sqlite://', '') : undefined,

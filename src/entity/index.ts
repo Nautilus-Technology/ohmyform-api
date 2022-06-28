@@ -1,3 +1,4 @@
+import { FileEntity } from './file.entity'
 import { FormEntity } from './form.entity'
 import { FormFieldEntity } from './form.field.entity'
 import { FormFieldLogicEntity } from './form.field.logic.entity'
@@ -12,6 +13,7 @@ import { UserEntity } from './user.entity'
 import { VisitorEntity } from './visitor.entity'
 
 export const entities = [
+  FileEntity,
   FormEntity,
   FormFieldEntity,
   FormFieldLogicEntity,
