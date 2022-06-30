@@ -7,11 +7,12 @@ import { FileUtilsService } from 'src/service/file/file.utils.service';
 export class UploadController {
   constructor(private fileUtilsService: FileUtilsService){}
 
-  @Post('single')
+  @Post('single/:fieldId')
   @UseInterceptors(FileInterceptor('file'))
-  async uploadSingleFile(@UploadedFile() file: FileCreateInput){
+  async uploadSingleFile(@UploadedFile() file: FileCreateInput, @Param('fieldId') fieldId){
     console.log('file: ', file);
-    await this.fileUtilsService.create(file)
+    console.log('fieldId: ', fieldId);
+    await this.fileUtilsService.create(file, fieldId)
 
     return file;
   }
@@ -21,7 +22,7 @@ export class UploadController {
   uploadMultipleFiles(@UploadedFiles() files: Array<Express.Multer.File>){
     console.log(files);
     // eslint-disable-next-line @typescript-eslint/no-misused-promises
-    files.forEach(async (file) => await this.fileUtilsService.create(file))
+    files.forEach(async (file) => await this.fileUtilsService.create(file, null))
     return files;
   }
 

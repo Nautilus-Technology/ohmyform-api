@@ -153,7 +153,7 @@ export const imports = [
         logging: configService.get<string>('DATABASE_LOGGING', 'false') === 'true',
         entities,
         migrations: [`${__dirname}/**/migrations/${migrationFolder}/**/*{.ts,.js}`],
-        migrationsRun: configService.get<boolean>('DATABASE_MIGRATE', true),
+        migrationsRun: configService.get<boolean>('DATABASE_MIGRATE', false),
         migrationsTransactionMode,
       })
     },

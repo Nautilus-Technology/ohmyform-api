@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { FormFieldEntity } from './form.field.entity';
 
 @Entity({name: 'file'})
 export class FileEntity{
@@ -22,5 +23,11 @@ export class FileEntity{
 
     @Column()
     public size: number
+
+    @ManyToOne(() => FormFieldEntity)
+    public field: FormFieldEntity
+
+  @Column({type: 'integer', unsigned: true})
+    public fieldId?: number
 
 }
