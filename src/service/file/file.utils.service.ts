@@ -5,6 +5,7 @@ import { FileEntity } from 'src/entity/file.entity';
 import { FormFieldEntity } from 'src/entity/form.field.entity';
 import { Repository } from 'typeorm';
 import { IdService } from '../id.service';
+import * as fs from 'fs';
 
 @Injectable()
 export class FileUtilsService{
@@ -38,6 +39,15 @@ export class FileUtilsService{
   }
 
   async delete(filename: string){
+    // delete the file from upload directory
+    const path = `./upload/${filename}`
+    try{
+      fs.unlinkSync(path)
+    } catch(err) {
+      console.error(err)
+    }
+
+    // delete the database entry corresponding to the file
     const toDeleteFile = this.fileRepository.findOne({filename})
     return this.fileRepository.delete((await toDeleteFile).id)
   }
