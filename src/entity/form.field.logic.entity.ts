@@ -33,7 +33,7 @@ export class FormFieldLogicEntity {
   @JoinColumn({name: 'jumpToId'})
   public jumpTo?: FormFieldEntity
 
-  @Column({type: 'integer', unsigned: true})
+  @Column({type: 'integer', unsigned: true, nullable: true})
   public jumpToId?: number
 
   @Column()
