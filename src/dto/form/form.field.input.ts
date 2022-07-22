@@ -27,6 +27,9 @@ export class FormFieldInput {
   readonly required: boolean
 
   @Field({ nullable: true })
+  readonly multiple?: boolean
+
+  @Field({ nullable: true })
   readonly defaultValue: string
 
   @Field({ nullable: true })

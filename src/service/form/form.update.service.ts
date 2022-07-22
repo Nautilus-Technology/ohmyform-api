@@ -81,6 +81,10 @@ export class FormUpdateService {
           field.required = nextField.required
         }
 
+        if (nextField.multiple !== undefined) {
+          field.multiple = nextField.multiple
+        }
+
         if (nextField.defaultValue !== undefined) {
           field.defaultValue = nextField.defaultValue
         }

@@ -27,6 +27,9 @@ export class FormFieldModel {
   readonly required: boolean
 
   @Field({ nullable: true })
+  readonly multiple?: boolean
+
+  @Field({ nullable: true })
   readonly defaultValue: string
 
   constructor(id: string, document: FormFieldEntity) {
@@ -38,6 +41,8 @@ export class FormFieldModel {
     this.type = document.type
     this.description = document.description
     this.required = document.required
+    console.log('DOCUMENT: ', document)
+    this.multiple = document.multiple
     this.defaultValue = document.defaultValue
   }
 }

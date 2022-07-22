@@ -36,6 +36,9 @@ export class FormFieldEntity {
   @Column()
   public required: boolean
 
+  @Column({ nullable: true })
+  public multiple?: boolean
+
   @Column({ type: 'boolean' })
   public disabled = false
 
