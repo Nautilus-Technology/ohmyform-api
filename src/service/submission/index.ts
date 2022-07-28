@@ -1,3 +1,4 @@
+import { SubmissionFieldDeleteService } from './submission.field.delete.service'
 import { SubmissionHookService } from './submission.hook.service'
 import { SubmissionNotificationService } from './submission.notification.service'
 import { SubmissionService } from './submission.service'
@@ -14,4 +15,5 @@ export const submissionServices = [
   SubmissionStartService,
   SubmissionStatisticService,
   SubmissionTokenService,
+  SubmissionFieldDeleteService,
 ]
